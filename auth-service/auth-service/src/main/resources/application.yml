@@ -1,0 +1,21 @@
+server:
+  host: ${server_host:http://localhost:8080}
+  port: 8080
+keycloak:
+  URL_keycloak: http://localhost:8189
+  realm: micro-spring
+spring:
+  application:
+    name: da-consult
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8189/realms/micro-spring
+          jwk-set-uri: http://localhost:8189/realms/micro-spring/protocol/openid-connect/certs
+
+jwt:
+  auth:
+    converter:
+      resource-id: auth-api
+      principle-attribute: preferred_username
